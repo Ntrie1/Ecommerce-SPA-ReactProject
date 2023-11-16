@@ -1,7 +1,9 @@
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, BellIcon, XMarkIcon } from '../../../../node_modules/@heroicons/react/24/outline'
 import { Link } from 'react-router-dom';
+import styles from './Header.module.css'
 // ../../node_modules/@heroicons/react/24/outline
+import logo from '../../../assets/logo.png'
 
 const navigation = [
   { name: 'Home', href: '/', current: true },
@@ -14,6 +16,8 @@ const userLinks = [
   { name: 'Login', href: '/login', current: false },
   { name: 'Register', href: '/register', current: false },
 ];
+
+const allLinks = [...navigation, ...userLinks];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -37,11 +41,11 @@ const Header = () => {
                   )}
                 </Disclosure.Button>
               </div>
-              <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+              <div className="flex flex-1 items-center justify-center sm:justify-start">
                 <div className="flex flex-shrink-0 items-center">
                   <img
-                    className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                    className={styles.logoSize}
+                    src={logo}
                     alt="Your Company"
                   />
                 </div>
@@ -63,14 +67,7 @@ const Header = () => {
                   </div>
                 </div>
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 space-x-4">
-                  <button
-                    type="button"
-                    className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                  >
-                    <span className="absolute -inset-1.5" />
-                    <span className="sr-only">View notifications</span>
-                    <BellIcon className="h-6 w-6" aria-hidden="true" />
-                  </button>
+                
 
                   {/* Profile dropdown */}
                   <Menu as="div" className="relative ml-3">
@@ -100,7 +97,7 @@ const Header = () => {
 
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1 px-2 pb-3 pt-2">
-              {navigation.map((item) => (
+              {allLinks.map((item) => (
                 <Disclosure.Button
                   key={item.name}
                   as={Link}
