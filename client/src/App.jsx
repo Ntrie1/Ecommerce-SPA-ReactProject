@@ -1,9 +1,14 @@
 import { useState } from 'react'
 import './App.css'
+import Header from './components/common/header/Header'
 
 function App() {
 
   return (
+    <>
+
+    <Header />
+    
     <section>
     <div className="bg-black text-white py-20 h-screen">
       <div className="container mx-auto flex flex-col md:flex-row items-center my-12 md:my-24">
@@ -30,6 +35,7 @@ function App() {
             </div>
           </div>
   </section>
+              </>
   )
 }
 
