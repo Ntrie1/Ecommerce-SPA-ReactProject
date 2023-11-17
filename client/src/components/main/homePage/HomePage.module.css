@@ -1,0 +1,13 @@
+/* styles/ImageGrid.module.css */
+
+.imageContainer {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .image {
+    max-height: 300px; 
+    margin: 8px; 
+    border-radius: 2rem;
+  }
+  
