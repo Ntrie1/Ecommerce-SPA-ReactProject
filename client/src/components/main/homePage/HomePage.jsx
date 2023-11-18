@@ -22,7 +22,7 @@ const HomePage = () => {
                                 <img className={`${styles.image} inline-block mt-28 hidden xl:block`} src="./images/deviceImages.jpg" />
                             </div>
                             <div>
-                                <img className={`${styles.image} inline-block mt-24 md:mt-0 p-8 md:p-0 hidden lg:block`} src="./images/devicesYellow.jpg" />
+                                <img className={`${styles.image} inline-block mt-24 md:mt-7 p-8 md:p-0 hidden lg:block`} src="./images/devicesYellow.jpg" />
                             </div>
                             <div>
                                 <img className={`${styles.image} inline-block mt-28 hidden lg:block`} src="./images/electronics-smung.jpg" />
