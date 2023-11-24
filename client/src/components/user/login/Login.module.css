@@ -1,0 +1,14 @@
+.mainBackground{
+    background-color: #EEEEEE;
+}
+.registerButton{
+    font-weight: 600;
+    color: black;
+    text-decoration: underline;
+    transition: 0.3s;
+}
+
+.registerButton:hover{
+    color: #b28d13;
+    font-size: 1.1em;
+}
