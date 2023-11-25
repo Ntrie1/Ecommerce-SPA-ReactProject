@@ -7,6 +7,11 @@ import { Route, Routes } from 'react-router-dom'
 import Login from './components/user/login/Login'
 
 function App() {
+  const [auth, setAuth] = useState({});
+
+  const loginSubmitHandler = (values) =>{
+    console.log(values);
+  }
 
   return (
     <>
@@ -15,7 +20,7 @@ function App() {
 
       <Routes>
         <Route path='/' element={<HomePage />} />
-        <Route path='/login' element={<Login />} />
+        <Route path='/login' element={<Login loginSubmitHandler={loginSubmitHandler} />} />
       </Routes>
 
       <Footer />

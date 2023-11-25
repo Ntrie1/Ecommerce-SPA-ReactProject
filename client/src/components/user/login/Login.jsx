@@ -4,9 +4,14 @@ import useForm from '../../../hooks/useForm';
 
 import styles from './Login.module.css'
 
-const Login = () =>{
+const Login = ({
+    loginSubmitHandler,
+}) =>{
 
-    const {values, onChange, onSubmit} = useForm();
+    const {values, onChange, onSubmit} = useForm(loginSubmitHandler,{
+        email: '',
+        password: '',  
+    });
 
 
     return(
@@ -24,13 +29,14 @@ const Login = () =>{
       
           {/* Right column container */}
           <div className="md:col-span-1 lg:col-span-1">
-            <form className="max-w-md mx-auto" onSubmit={onSubmit}>
+            <form onSubmit={onSubmit} className="max-w-md mx-auto">
               {/* Sign in section */}
               <div className="mb-6">
                 {/* Email input */}
                 <input
                   type="email"
                   placeholder="Email address"
+                  name="email"
                   onChange={onChange}
                   value={values.email}
                   className="w-full p-3 border border-solid border-gray-300 outline-none rounded-lg"
@@ -41,6 +47,7 @@ const Login = () =>{
               <div className="mb-6">
                 <input
                   type="password"
+                  name="password"
                   placeholder="Password"
                   onChange={onChange}
                   value={values.password}
@@ -53,7 +60,7 @@ const Login = () =>{
               {/* Login button */}
               <div className="text-center">
                 <button
-                  type="button"
+                  type="submit"
                   className="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition duration-300"
                   >
                   Login
