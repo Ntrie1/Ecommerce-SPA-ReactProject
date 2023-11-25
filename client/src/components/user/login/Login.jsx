@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
 
+import useForm from '../../../hooks/useForm';
+
 import styles from './Login.module.css'
 
 const Login = () =>{
+
+    const {values, onChange, onSubmit} = useForm();
 
 
     return(
@@ -20,13 +24,15 @@ const Login = () =>{
       
           {/* Right column container */}
           <div className="md:col-span-1 lg:col-span-1">
-            <form className="max-w-md mx-auto">
+            <form className="max-w-md mx-auto" onSubmit={onSubmit}>
               {/* Sign in section */}
               <div className="mb-6">
                 {/* Email input */}
                 <input
                   type="email"
                   placeholder="Email address"
+                  onChange={onChange}
+                  value={values.email}
                   className="w-full p-3 border border-solid border-gray-300 outline-none rounded-lg"
                   />
               </div>
@@ -36,6 +42,8 @@ const Login = () =>{
                 <input
                   type="password"
                   placeholder="Password"
+                  onChange={onChange}
+                  value={values.password}
                   className="w-full p-3 border border-solid border-gray-300 outline-none rounded-lg"
                   />
               </div>
