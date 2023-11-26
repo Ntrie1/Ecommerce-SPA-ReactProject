@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 import useForm from '../../../hooks/useForm';
 
 import styles from './Login.module.css'
+import { useContext } from "react";
+import AuthContext from "../../../context/authContext";
 
-const Login = ({
-    loginSubmitHandler,
-}) =>{
+const Login = () =>{
 
+    const { loginSubmitHandler } = useContext(AuthContext)
     const {values, onChange, onSubmit} = useForm(loginSubmitHandler,{
         email: '',
         password: '',  
