@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import styles from './Header.module.css'
 // ../../node_modules/@heroicons/react/24/outline
 import logo from '../../../assets/logo.png'
+import { useContext } from 'react';
+import AuthContext from '../../../context/authContext';
 
 const navigation = [
   { name: 'Home', href: '/', current: true },
@@ -12,18 +14,33 @@ const navigation = [
   { name: 'Characters', href: '/characters', current: false },
 ];
 
-const userLinks = [
-  { name: 'Login', href: '/login', current: false },
-  { name: 'Register', href: '/register', current: false },
-];
+// const userLinks = [
+//   { name: 'Login', href: '/login', current: false },
+//   { name: 'Register', href: '/register', current: false },
+// ];
 
-const allLinks = [...navigation, ...userLinks];
+// const allLinks = [...navigation, ...userLinks];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
 const Header = () => {
+
+  const {
+    isAuthenticated,
+    username
+  } = useContext(AuthContext);
+
+  const userLinks = isAuthenticated
+  ? [{ name: 'Logout', href: '/logout', current: false }] // If authenticated, don't show login and register links
+  : [
+      { name: 'Login', href: '/login', current: false },
+      { name: 'Register', href: '/register', current: false },
+    ];
+
+const allLinks = [...navigation, ...userLinks];
+
   return (
     <Disclosure as="nav" className={styles.nav}>
       {({ open }) => (
