@@ -1,0 +1,15 @@
+.mainBackground{
+    background-color: #EEEEEE;
+}
+
+.loginButton{
+    font-weight: 600;
+    color: black;
+    text-decoration: underline;
+    transition: 0.3s;
+}
+
+.loginButton:hover{
+    color: #b28d13;
+    font-size: 1.1em;
+}

@@ -8,6 +8,7 @@ import Login from './components/user/login/Login'
 import AuthContext from './context/authContext'
 
 import * as authService from './services/authService'
+import Register from './components/user/register/Register'
 
 function App() {
   const navigate = useNavigate();
@@ -24,8 +25,13 @@ function App() {
     }
   }
 
+  const registerSubmitHandler = async(values) =>{
+    console.log(values);
+  }
+
   const values = {
     loginSubmitHandler, 
+    registerSubmitHandler,
     username: auth.username,
     email: auth.email,
     isAuthenticated: !!auth.username,
@@ -41,6 +47,7 @@ function App() {
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/login' element={<Login loginSubmitHandler={loginSubmitHandler} />} />
+        <Route path='/register' element={<Register/>} />
       </Routes>
 
       <Footer />
