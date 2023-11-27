@@ -9,32 +9,56 @@ import AuthContext from './context/authContext'
 
 import * as authService from './services/authService'
 import Register from './components/user/register/Register'
+import Logout from './components/user/logout/Logout'
 
 function App() {
   const navigate = useNavigate();
-  const [auth, setAuth] = useState({});
+  const [auth, setAuth] = useState(() => {
+    localStorage.removeItem('accessToken');
+    return {};
+  });
 
   const loginSubmitHandler = async (values) =>{
     console.log(values);
     try {
       const result = await authService.login(values.email, values.password);
+      localStorage.setItem('accessToken', result._id)
       setAuth(result);
       navigate('/')
+      console.log(result);
     } catch (error) {
       console.log(error);
     }
   }
 
   const registerSubmitHandler = async(values) =>{
-    console.log(values);
+    
+    const result = await authService.register(
+      values.name,
+      values.email,
+      values.username,
+      values.password,
+      values.rePassword);
+
+      setAuth(result);
+      localStorage.setItem('accessToken', result._id)
+      navigate('/')
+    console.log(result);
+  }
+
+  const logoutHandler = () => {
+    setAuth({});
+    localStorage.removeItem('accessToken')
+    navigate('/')
   }
 
   const values = {
     loginSubmitHandler, 
     registerSubmitHandler,
+    logoutHandler,
     username: auth.username,
     email: auth.email,
-    isAuthenticated: !!auth.username,
+    isAuthenticated: !!auth.email,
   }
 
   return (
@@ -48,6 +72,7 @@ function App() {
         <Route path='/' element={<HomePage />} />
         <Route path='/login' element={<Login loginSubmitHandler={loginSubmitHandler} />} />
         <Route path='/register' element={<Register/>} />
+        <Route path='/logout' element={<Logout/>} />
       </Routes>
 
       <Footer />

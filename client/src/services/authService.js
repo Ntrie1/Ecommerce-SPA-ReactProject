@@ -11,9 +11,12 @@ export const login = async (email, password) => {
     return result;
 };
 
-export const register = (email, password) => request.post(`${baseUrl}/register`, {
+export const register = (name, email, username, password, rePassword) => request.post(`${baseUrl}/register`, {
+    name,
     email,
+    username,
     password,
+    rePassword,
 });
 
-export const logout = () => request.get(`${baseUrl}/logout`);  
+export const logout = () => request.post(`${baseUrl}/logout`);  
