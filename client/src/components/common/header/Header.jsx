@@ -9,9 +9,9 @@ import AuthContext from '../../../context/authContext';
 
 const navigation = [
   { name: 'Home', href: '/', current: true },
-  { name: 'About Us', href: '/about', current: false },
-  { name: 'Contacts', href: '/contacts', current: false },
-  { name: 'Characters', href: '/characters', current: false },
+  { name: 'All Devices', href: '/devices', current: false },
+  { name: 'Create Offer', href: '/devices/create', current: false },
+  { name: 'Search', href: '/search', current: false },
 ];
 
 // const userLinks = [
@@ -32,14 +32,29 @@ const Header = () => {
     username
   } = useContext(AuthContext);
 
-  const userLinks = isAuthenticated
-  ? [{ name: 'Logout', href: '/logout', current: false }] // If authenticated, don't show login and register links
-  : [
-      { name: 'Login', href: '/login', current: false },
-      { name: 'Register', href: '/register', current: false },
-    ];
+  const commonNavigation = [
+    { name: 'Home', href: '/', current: true },
+    { name: 'All Devices', href: '/devices', current: false },
+  ];
 
-const allLinks = [...navigation, ...userLinks];
+  // Navigation items based on authentication status
+  const additionalNavigation = isAuthenticated
+    ? [
+        { name: 'Create Offer', href: '/devices/create', current: false },
+        { name: 'Search', href: '/search', current: false },
+      ]
+    : [];
+
+  const userLinks = isAuthenticated
+    ? [{ name: 'Logout', href: '/logout', current: false }]
+    : [
+        { name: 'Login', href: '/login', current: false },
+        { name: 'Register', href: '/register', current: false },
+      ];
+
+  const navigation = [...commonNavigation, ...additionalNavigation];
+
+  const allLinks = [...navigation, ...userLinks];
 
   return (
     <Disclosure as="nav" className={styles.nav}>
