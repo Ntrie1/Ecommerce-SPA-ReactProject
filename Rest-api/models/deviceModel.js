@@ -17,12 +17,10 @@ const deviceSchema = new mongoose.Schema({
     },
     condition: {
         type: String,
-        enum: ['new', 'like new', 'good', 'fair'],
         required: true,
     },
     storageCapacity: {
         type: String,
-        required: true,
     },
     color: {
         type: String,
@@ -36,13 +34,8 @@ const deviceSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    images: {
-        type: [String], // Array of image URLs
-        required: true,
-    },
-
-    location: {
-        type: String,
+    imageUrl: {
+        type: String, 
         required: true,
     },
     userId: {
