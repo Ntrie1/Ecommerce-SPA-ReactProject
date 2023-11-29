@@ -2,6 +2,8 @@ import { useContext } from "react";
 import AuthContext from "../../../context/authContext";
 import useForm from "../../../hooks/useForm";
 
+import * as devicesService from '../../../services/devicesService'
+
 const CreateDevice = () => {
     const { usename, _id } = useContext(AuthContext);
 
@@ -9,8 +11,9 @@ const CreateDevice = () => {
         return values.username.trim() !== '' && values.password.trim() !== '';
     };
 
-    const onCreateDeviceSubmit = (values) => {
-        console.log(values);
+    const onCreateDeviceSubmit = async (values) => {
+      const response = await devicesService.create(values); 
+        console.log(response);
     }
 
     const { values, onChange, onSubmit } = useForm(onCreateDeviceSubmit, {
