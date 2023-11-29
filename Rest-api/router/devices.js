@@ -2,7 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
-const Device = require('../models/Device');
+const Device = require('../models/deviceModel');
 const { auth } = require('../utils');   
 
 
@@ -22,7 +22,7 @@ router.post('/create', auth(), async (req, res) => {
     }
 
     try {
-        const createdDevice = await movieModel.create(deviceData);
+        const createdDevice = await Device.create(deviceData);
         res.status(201).json(createdDevice);
     } catch (error) {
         console.error('Error creating offer:', error);

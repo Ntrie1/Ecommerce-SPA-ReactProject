@@ -1,6 +1,7 @@
 // Device.js
 
 const mongoose = require('mongoose');
+const { ObjectId } = require('mongoose').Types;
 
 const deviceSchema = new mongoose.Schema({
     deviceType: {
