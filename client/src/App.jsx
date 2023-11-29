@@ -9,6 +9,7 @@ import {AuthProvider} from './context/authContext'
 import Register from './components/user/register/Register'
 import Logout from './components/user/logout/Logout'
 import CreateDevice from './components/devices/create-device/CreateDevice'
+import AllDevices from './components/devices/all-devices/AllDevices'
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register/>} />
         <Route path='/logout' element={<Logout/>} />
+        <Route path='/devices' element={<AllDevices />} />
         <Route path='/devices/create' element={<CreateDevice/>} />
       </Routes>
 
