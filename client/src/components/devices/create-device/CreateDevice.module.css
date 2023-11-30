@@ -1,0 +1,12 @@
+.mainBackground{
+    padding-top: 2em;
+    padding-bottom: 6em;
+    background-image: url('https://coolbackgrounds.io/images/backgrounds/index/compute-ea4c57a4.png');
+}
+
+.heading{
+    text-align: center;
+    font-size: 1.6em;
+    font-weight: 600;
+    color: #FFFFFf;
+}
