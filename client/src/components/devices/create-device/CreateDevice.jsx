@@ -12,10 +12,10 @@ const validationSchema = object().shape({
   condition: string().required('Condition is required'),
   storageCapacity: string().required('Storage Capacity is required'),
   color: string().required('Color is required'),
-  price: number().required('Price is required'),
+  price: number().typeError('Price must be a number').required('Price is required'),
   description: string().required('Description is required'),
-  imageUrl: string().required('Image URL is required'),
-  sellerNumber: string().required('Seller Number is required'),
+  imageUrl: string().required('Please enter website'),
+sellerNumber: number().typeError('Seller Number must be a number').required('Seller Number is required'),
 });
 
 const CreateDevice = () => {
