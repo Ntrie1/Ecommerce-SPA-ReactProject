@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import * as deviceService from '../../../services/devicesService'
 import OneDevice from "./one-device/OneDevice";
 
+import styles from './AllDevices.module.css'
+
 const AllDevices = () => {
     const [devices, setDevices] = useState([]);
 
@@ -32,21 +34,24 @@ const AllDevices = () => {
 
 
     return(
-        <div className="flex flex-col items-center">
+        <div className={styles.fullViewport}>
+
+        <div className={styles.customContainer}>
         <h2 className="text-2xl font-semibold mb-4">All Devices</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className={styles.deviceGrid}>
     
         {devices.map(device =>
              <OneDevice
-              key={device._id} 
+             key={device._id} 
               imageUrl={device.imageUrl}
               type={device.deviceType}
-              model={device.model}
+              brand={device.brand}
               price={device.price}
               />)}
     
-    </div>
-      </div>
+        </div>
+        </div>
+        </div>
     );
 }
 
