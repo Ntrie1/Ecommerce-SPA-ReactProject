@@ -43,6 +43,7 @@ const AllDevices = () => {
         {devices.map(device =>
              <OneDevice
              key={device._id} 
+             id={device._id}
               imageUrl={device.imageUrl}
               type={device.deviceType}
               brand={device.brand}
