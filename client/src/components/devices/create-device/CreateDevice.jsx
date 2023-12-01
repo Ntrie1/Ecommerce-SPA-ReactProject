@@ -1,9 +1,10 @@
-import { useContext } from 'react';
+import { useState } from 'react';
 import { object, string, number } from 'yup';
 import AuthContext from '../../../context/authContext';
 import useForm from '../../../hooks/useForm';
 import styles from './CreateDevice.module.css';
 import * as devicesService from '../../../services/devicesService';
+import { useNavigate } from 'react-router-dom';
 
 const validationSchema = object().shape({
   deviceType: string().required('Device Type is required'),
@@ -19,11 +20,20 @@ sellerNumber: number().typeError('Seller Number must be a number').required('Sel
 });
 
 const CreateDevice = () => {
-  const { usename, _id } = useContext(AuthContext);
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   const onCreateDeviceSubmit = async (values) => {
-    const response = await devicesService.create(values);
-    console.log(response);
+    try {
+      const response = await devicesService.create(values);
+      navigate('/devices');
+    } catch (error) {
+      if (error.response && error.response.data && error.response.data.message) {
+        setError(error.response.data.message);
+      } else {
+        setError('An error occurred while creating the device.');
+      }
+    }
   };
 
   const { values, errors, onChange, onSubmit } = useForm(
@@ -52,6 +62,8 @@ const CreateDevice = () => {
           onSubmit={onSubmit}
           className="max-w-md mx-auto mt-8 p-4 border border-gray-300 rounded-md bg-gray-100"
         >
+
+              {error && <p className="text-red-500 text-sm mb-4">{error}</p>}   
           {/* Device Type */}
           <div className="mb-4">
             <label
