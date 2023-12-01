@@ -31,4 +31,15 @@ router.post('/create', auth(), async (req, res) => {
     
 });
 
+router.get('/:deviceId', async (req, res) => {
+    const { deviceId } = req.params;
+
+    try {
+        const currentDevice = await Device.findById(deviceId);
+        res.json(currentDevice);
+    } catch (error) {
+        return res.status(404).send({ message: 'There is no device with this id!' });
+    }
+})
+
 module.exports = router;
