@@ -1,4 +1,34 @@
+import { useEffect, useState } from "react";
+
+import * as deviceService from '../../../services/devicesService'
+
 const AllDevices = () => {
+    const [devices, setDevices] = useState([]);
+
+    useEffect(() => {
+        const abortController = new AbortController();
+    
+        const fetchData = async () => {
+            try {
+                const response = await deviceService.getAll( { signal: abortController.signal });
+                setDevices(response);
+            } catch (error) {
+                if (error.name === 'AbortError') {
+                    console.log('Fetch aborted:', error.message);
+                } else {
+                    console.error('Fetch error:', error);
+                }
+            }
+        };
+    
+        fetchData();
+    
+        return () => {
+            abortController.abort();
+        };
+    }, []);
+
+
 
     return(
         <div>
