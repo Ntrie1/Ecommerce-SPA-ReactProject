@@ -1,22 +1,21 @@
 import { useState } from 'react';
 import { object, string, number } from 'yup';
-import AuthContext from '../../../context/authContext';
 import useForm from '../../../hooks/useForm';
 import styles from './CreateDevice.module.css';
 import * as devicesService from '../../../services/devicesService';
 import { useNavigate } from 'react-router-dom';
 
 const validationSchema = object().shape({
-  deviceType: string().required('Device Type is required'),
-  brand: string().required('Brand is required'),
-  model: string().required('Model is required'),
-  condition: string().required('Condition is required'),
-  storageCapacity: string().required('Storage Capacity is required'),
-  color: string().required('Color is required'),
-  price: number().typeError('Price must be a number').required('Price is required'),
+  deviceType: string().required('Device Type is required').max(15, 'The word is too long!'),
+  brand: string().required('Brand is required').max(15, 'The word is too long!'),
+  model: string().required('Model is required').max(15, 'The word is too long!'),
+  condition: string().required('Condition is required').max(15, 'The word is too long!'),
+  storageCapacity: string().required('Storage Capacity is required').max(15, 'The word is too long!'),
+  color: string().required('Color is required').max(15, 'The word is too long!'),
+  price: number().typeError('Price must be a number').required('Price is required').max(30, 'Too many characters!'),
   description: string().required('Description is required'),
   imageUrl: string().required('Please enter website'),
-sellerNumber: number().typeError('Seller Number must be a number').required('Seller Number is required'),
+sellerNumber: number().typeError('Seller Number must be a number').required('Seller Number is required').max(15, 'The number is too long!'),
 });
 
 const CreateDevice = () => {
