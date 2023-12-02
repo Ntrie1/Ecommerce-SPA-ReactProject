@@ -10,6 +10,7 @@ import Register from './components/user/register/Register'
 import Logout from './components/user/logout/Logout'
 import CreateDevice from './components/devices/create-device/CreateDevice'
 import AllDevices from './components/devices/all-devices/AllDevices'
+import DetailsDevice from './components/devices/details-device/DetailsDevice'
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
         <Route path='/logout' element={<Logout/>} />
         <Route path='/devices' element={<AllDevices />} />
         <Route path='/devices/create' element={<CreateDevice/>} />
+        <Route path='/devices/:deviceId' element={<DetailsDevice/>} />
       </Routes>
 
       <Footer />

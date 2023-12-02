@@ -16,3 +16,9 @@ export const create = async (data) => {
     return response;
 
 }
+
+export const getOne = async (id) =>{
+    const response = await request.get(`${baseUrl}/${id}`);
+
+    return response;
+}
