@@ -12,7 +12,7 @@ const HomePage = () => {
                         <h2 className="text-3xl md:text-5xl leading-relaxed md:leading-snug mb-2">Second-hand electronic devices
                         </h2>
                         <p className="text-sm md:text-base text-gray-50 mb-4">Explore our curated collection of second-hand electronic devices for unbeatable prices!</p>
-                        <Link href="#"
+                        <Link to="/devices"
                             className="bg-transparent hover:bg-yellow-300 text-yellow-300 hover:text-black rounded shadow hover:shadow-lg py-2 px-4 border border-yellow-300 hover:border-transparent">
                             Explore Now</Link>
                     </div>
