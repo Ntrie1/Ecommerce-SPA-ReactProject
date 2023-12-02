@@ -1,0 +1,19 @@
+.errorContainer {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+    padding: 8px 16px;
+    border-radius: 4px;
+    position: relative;
+    text-align: center;
+  }
+  
+  .errorContainer strong {
+    font-weight: bold;
+  }
+  
+  .errorContainer span {
+    display: block;
+    white-space: normal;
+  }
+  
