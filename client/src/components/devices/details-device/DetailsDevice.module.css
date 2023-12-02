@@ -17,3 +17,14 @@
     white-space: normal;
   }
   
+  .backgroundContainer {
+    height: 100vh;
+    background-image: url('../../../../public/images/backgroundDetails.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+  }

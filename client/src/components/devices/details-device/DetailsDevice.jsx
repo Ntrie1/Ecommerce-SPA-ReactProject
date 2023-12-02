@@ -40,7 +40,7 @@ const DetailsDevice = () => {
 
     return (
 
-        <div>
+        <div className={styles.backgroundContainer}>
              {error && ( 
                 <div className={styles.errorContainer}>
                     <strong>Error:</strong>
@@ -48,7 +48,7 @@ const DetailsDevice = () => {
                 </div>
              )} 
 
-        <div className="max-w-md mx-auto mt-8 p-4 border border-gray-300 rounded-md bg-white">
+        <div className="max-w-md mx-auto mt-8 mb-20 p-4 border border-gray-300 rounded-md bg-white">
             <img
                 src={device.imageUrl}
                 alt='ll'
@@ -80,6 +80,22 @@ const DetailsDevice = () => {
                 <span className="font-semibold">Seller Number:</span>{' '}
                 {device.sellerNumber}
             </p>
+            {isOwner && (
+                    <div className="flex justify-between mt-4">
+                        <button
+                            // onClick={handleEdit}
+                            className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300"
+                        >
+                            Edit
+                        </button>
+                        <button
+                            // onClick={handleDelete}
+                            className="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 transition duration-300"
+                        >
+                            Delete
+                        </button>
+                    </div>
+                )}
         </div>
 
         </div> 
