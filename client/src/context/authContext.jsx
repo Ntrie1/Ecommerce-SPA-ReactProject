@@ -67,7 +67,7 @@ export const AuthProvider = ({
       clearError,
       username: auth.username,
       email: auth.email,
-      _id: auth._id,
+      userId: auth._id,
       isAuthenticated: !!auth.email,
       loginError,
       registerError
