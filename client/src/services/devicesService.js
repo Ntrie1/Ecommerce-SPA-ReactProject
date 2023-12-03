@@ -22,3 +22,9 @@ export const getOne = async (id) =>{
 
     return response;
 }
+
+export const edit = async (deviceId, data) => {
+    const response = await request.put(`${baseUrl}/edit/${deviceId}`, data);
+
+    return response;
+}
