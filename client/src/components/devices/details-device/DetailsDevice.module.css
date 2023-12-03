@@ -18,7 +18,7 @@
   }
   
   .backgroundContainer {
-    height: 100vh;
+    min-height: 100vh;
     background-image: url('../../../../public/images/backgroundDetails.jpg');
     background-size: cover;
     background-position: center;
@@ -28,3 +28,45 @@
     justify-content: center;
     color: #fff;
   }
+
+.backgroundContainer {
+    position: relative;
+  }
+  
+  .modalBackdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .confirmModal {
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+  }
+  
+  .confirmModal button {
+    cursor: pointer;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    margin-right: 8px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .confirmModal button:hover {
+    background-color: #ddd;
+  }
+  
+  .confirmModal button.bg-red-500:hover {
+    background-color: #e53e3e; 
+  }
+  

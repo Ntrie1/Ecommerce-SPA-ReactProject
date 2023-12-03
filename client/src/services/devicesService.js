@@ -28,3 +28,9 @@ export const edit = async (deviceId, data) => {
 
     return response;
 }
+
+export const remove = async (deviceId) => {
+    const response = await request.remove(`${baseUrl}/${deviceId}`);
+
+    return response;
+}

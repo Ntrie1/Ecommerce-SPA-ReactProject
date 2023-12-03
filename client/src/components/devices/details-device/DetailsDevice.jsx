@@ -1,15 +1,17 @@
 import { useContext, useEffect, useState } from "react";
 import AuthContext from "../../../context/authContext";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 import styles from './DetailsDevice.module.css'
 import * as deviceService from '../../../services/devicesService'
 
 const DetailsDevice = () => {
+    const navigate = useNavigate();
     const { userId } = useContext(AuthContext);
     const { deviceId } = useParams();
     const [device, setDevice] = useState([]);
     const [isOwner, setIsOwner] = useState(false);
+    const [showConfirmModal, setShowConfirmModal] = useState(false)
     const [error, setError] = useState(null);
 
    
@@ -36,6 +38,18 @@ const DetailsDevice = () => {
 
     console.log(isOwner);
 
+    const handleDelete = () =>{
+        try {
+            deviceService.remove(deviceId);
+            navigate('/devices');
+        } catch (error) {
+            setError(error.message)
+        }
+    }
+
+    const toggleConfirmModal = () => {
+        setShowConfirmModal((prev) => !prev);
+      };
 
 
     return (
@@ -59,6 +73,12 @@ const DetailsDevice = () => {
             </h2>
             <p className="text-gray-700 mb-2">
                 <span className="font-semibold">Type:</span> {device.deviceType}
+            </p>
+            <p className="text-gray-700 mb-2">
+                <span className="font-semibold">Brand:</span> {device.brand}
+            </p>
+            <p className="text-gray-700 mb-2">
+                <span className="font-semibold">Type:</span> {device.model}
             </p>
             <p className="text-gray-700 mb-2">
                 <span className="font-semibold">Condition:</span> {device.condition}
@@ -89,13 +109,38 @@ const DetailsDevice = () => {
                             Edit
                         </Link>
                         <button
-                            // onClick={handleDelete}
+                            onClick={toggleConfirmModal}
                             className="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 transition duration-300"
                         >
                             Delete
                         </button>
                     </div>
                 )}
+
+     {/* Delete confirmation modal */}
+        {showConfirmModal && (
+          <div className={styles.modalBackdrop}>
+            <div className={styles.confirmModal}>
+              <p className="text-gray-800 mb-4">
+                Are you sure you want to delete this item?
+              </p>
+              <div className="flex justify-end">
+                <button
+                  onClick={toggleConfirmModal}
+                  className="bg-gray-500 text-white py-2 px-4 rounded-md mr-2 hover:bg-gray-600 transition duration-300"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={handleDelete}
+                  className="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 transition duration-300"
+                >
+                  Confirm Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
         </div>
 
         </div> 
