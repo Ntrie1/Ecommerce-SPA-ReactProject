@@ -46,7 +46,6 @@ router.put('/edit/:deviceId', auth(), async (req, res) => {
     const { deviceId } = req.params;
     const userId = req.user?._id;
 
-    console.log(deviceId)
   
     try {
       const deviceToUpdate = await Device.findById(deviceId);
@@ -69,6 +68,31 @@ router.put('/edit/:deviceId', auth(), async (req, res) => {
       res.json({ message: 'Device updated successfully', updatedMovie: updatedDevice });
     } catch (error) {
       res.status(500).json({ error: 'An error occurred while updating the Device' });
+    }
+  });
+
+  router.delete('/:deviceId', auth(), async (req, res) => {
+    const { deviceId } = req.params;
+    const userId = req.user?._id;
+
+  
+    try {
+      const device = await Device.findById(deviceId);
+  
+      if (!device) {
+        return res.status(404).json({ error: 'device not found' });
+      }
+  
+      if (device.userId.toString() !== userId.toString()) {
+  
+        return res.status(403).json({ error: 'You are not authorized to delete this device!' });
+      }
+      
+      await device.remove();
+      res.status(204).send();
+
+    } catch (error) {
+      res.status(500).json({ error: 'An error occurred while deleting the device' });
     }
   });
 
