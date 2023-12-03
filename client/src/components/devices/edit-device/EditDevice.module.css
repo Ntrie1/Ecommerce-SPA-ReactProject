@@ -2,6 +2,7 @@
     padding-top: 2em;
     padding-bottom: 6em;
     background-color: #EFE2BA;
+    min-height: 100vh;
 }
 
 .heading{

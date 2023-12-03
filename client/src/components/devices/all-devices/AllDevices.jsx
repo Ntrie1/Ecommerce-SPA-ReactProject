@@ -12,10 +12,10 @@ const AllDevices = () => {
 
     useEffect(() => {
         const abortController = new AbortController();
-
+    
         const fetchData = async () => {
             try {
-                const response = await deviceService.getAll({ signal: abortController.signal });
+                const response = await deviceService.getAll( { signal: abortController.signal });
                 setDevices(response);
                 setIsLoading(false);
             } catch (error) {
@@ -26,9 +26,9 @@ const AllDevices = () => {
                 }
             }
         };
-
+    
         fetchData();
-
+    
         return () => {
             abortController.abort();
         };
@@ -36,7 +36,7 @@ const AllDevices = () => {
 
 
 
-    return (
+    return(
         <>
             {isLoading ? (
                 <Loader />
