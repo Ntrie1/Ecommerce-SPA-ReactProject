@@ -13,6 +13,11 @@ export default function useForm(submitHandler, initialValues, validationSchema) 
             setErrors((prevErrors) => ({ ...prevErrors, [name]: error.message }));
         }
     };
+
+
+    const setFormValues = (newValues) => {
+        setValues((prevValues) => ({ ...prevValues, ...newValues }));
+    };
     
 
     const onChange = (e) => {
@@ -45,5 +50,6 @@ export default function useForm(submitHandler, initialValues, validationSchema) 
         errors,
         onChange,
         onSubmit,
+        setValues: setFormValues
     };
 }
