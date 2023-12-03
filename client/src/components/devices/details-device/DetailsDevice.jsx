@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import AuthContext from "../../../context/authContext";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import styles from './DetailsDevice.module.css'
 import * as deviceService from '../../../services/devicesService'
@@ -68,7 +68,7 @@ const DetailsDevice = () => {
                 {device.storageCapacity}
             </p>
             <p className="text-gray-700 mb-2">
-                <span className="font-semibold">Color:</span>{device.color}
+                <span className="font-semibold">Color:</span> {device.color}
             </p>
             <p className="text-gray-700 mb-2">
                 <span className="font-semibold">Price:</span> ${device.price}
@@ -82,12 +82,12 @@ const DetailsDevice = () => {
             </p>
             {isOwner && (
                     <div className="flex justify-between mt-4">
-                        <button
+                        <Link to={`/devices/${deviceId}/edit`}
                             // onClick={handleEdit}
                             className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300"
                         >
                             Edit
-                        </button>
+                        </Link>
                         <button
                             // onClick={handleDelete}
                             className="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 transition duration-300"
