@@ -1,8 +1,9 @@
 const {
     userModel,
-    tokenBlacklistModel
+    tokenBlacklistModel,
 } = require('../models');
 
+const Device = require('../models/deviceModel');
 const utils = require('../utils');
 const { authCookieName } = require('../app-config');
 
@@ -105,10 +106,41 @@ function editProfileInfo(req, res, next) {
         .catch(next);
 }
 
+async function userDevices(req,res) {
+    let userDevices = [];
+
+    
+    const userId = req.user?._id;
+    const user = await userModel.findById(userId);
+    
+    if (!user) {
+        return res.status(404).json({ error: 'User not found' });
+      }
+    
+      if (!user.devices) {
+        return res.status(400).json({ error: 'User does not have created devices' });
+      }
+
+      for (const deviceId of user.devices) {
+        const device = await Device.findById(deviceId);
+
+        if(device){
+            userDevices.push(device)
+        }
+      }
+
+   
+
+    res.json(userDevices)
+
+
+}
+
 module.exports = {
     login,
     register,
     logout,
     getProfileInfo,
     editProfileInfo,
+    userDevices
 }
