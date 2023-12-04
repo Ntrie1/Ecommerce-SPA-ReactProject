@@ -1,0 +1,17 @@
+.fullViewport {
+    min-height: 100vh;
+    background-image: url('../../../../public/images/profile-background.jpg');
+  }
+  
+  .customContainer {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .deviceGrid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 5em;
+  }

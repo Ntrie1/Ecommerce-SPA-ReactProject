@@ -12,6 +12,7 @@ import CreateDevice from './components/devices/create-device/CreateDevice'
 import AllDevices from './components/devices/all-devices/AllDevices'
 import DetailsDevice from './components/devices/details-device/DetailsDevice'
 import EditDevice from './components/devices/edit-device/EditDevice'
+import Profile from './components/user/profile/Profile'
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register/>} />
         <Route path='/logout' element={<Logout/>} />
+        <Route path='/profile' element={<Profile/>} />
         <Route path='/devices' element={<AllDevices />} />
         <Route path='/devices/create' element={<CreateDevice/>} />
         <Route path='/devices/:deviceId' element={<DetailsDevice/>} />
