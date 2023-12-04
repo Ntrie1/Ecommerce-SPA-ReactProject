@@ -19,3 +19,9 @@ export const register = (email, username, password, repeatPassword) => request.p
 });
 
 export const logout = () => request.post(`${baseUrl}/logout`);  
+
+export const createdDevices = async () => {
+    const response = await request.get(`${baseUrl}/users/profile/devices`);
+
+    return response;
+}
