@@ -4,6 +4,7 @@ const express = require('express');
 const router = express.Router();
 const Device = require('../models/deviceModel');
 const { auth } = require('../utils');   
+const { userModel } = require('../models');
 
 
 router.get('/', async (req,res)=>{
@@ -21,9 +22,17 @@ router.post('/create', auth(), async (req, res) => {
         userId: userId,
     }
 
+    const owner = await userModel.findById(deviceData.userId);
+
+    if (!owner.devices) {
+        owner.devices = [];
+    }
+
     try {
         const createdDevice = await Device.create(deviceData);
         res.status(201).json(createdDevice);
+        owner.devices.push(createdDevice);
+        await owner.save();
     } catch (error) {
         console.error('Error creating offer:', error);
         res.status(500).json({ error: 'Error creating offer' });
