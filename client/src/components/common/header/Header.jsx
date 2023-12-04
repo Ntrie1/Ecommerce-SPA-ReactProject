@@ -11,7 +11,6 @@ const navigation = [
   { name: 'Home', href: '/', current: true },
   { name: 'All Devices', href: '/devices', current: false },
   { name: 'Create Offer', href: '/devices/create', current: false },
-  { name: 'Search', href: '/search', current: false },
 ];
 
 // const userLinks = [
@@ -41,7 +40,6 @@ const Header = () => {
   const additionalNavigation = isAuthenticated
     ? [
         { name: 'Create Offer', href: '/devices/create', current: false },
-        { name: 'Search', href: '/search', current: false },
       ]
     : [];
 
