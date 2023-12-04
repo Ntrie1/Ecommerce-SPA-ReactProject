@@ -46,7 +46,10 @@ const Header = () => {
     : [];
 
   const userLinks = isAuthenticated
-    ? [{ name: 'Logout', href: '/logout', current: false }]
+    ? [
+      { name: 'Logout', href: '/logout', current: false },
+      { name: 'Profile', href: '/profile', current: true }
+    ]
     : [
         { name: 'Login', href: '/login', current: false },
         { name: 'Register', href: '/register', current: false },
