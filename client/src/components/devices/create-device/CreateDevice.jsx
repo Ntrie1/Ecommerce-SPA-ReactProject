@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { object, string, number } from 'yup';
-import AuthContext from '../../../context/authContext';
 import useForm from '../../../hooks/useForm';
 import styles from './CreateDevice.module.css';
 import * as devicesService from '../../../services/devicesService';
