@@ -1,16 +1,49 @@
+import { useEffect, useState } from "react";
+import * as devicesService from '../../../services/devicesService'
+
+const initialValue = {
+    search: '',
+};
+
 const SearchDevice = () => {
+    const [searchValue, setSearchValue] = useState(initialValue);
+    const [devices, setDevices] = useState([]);
+
+
+    useEffect(() =>{
+        devicesService.getAll()
+        .then(res => setDevices(res.filter(device => device.brand
+            .toLowerCase()
+            .includes(searchValue.search.toLowerCase()))))
+        .catch(error => console.log(error))
+
+    },[searchValue]);
+
+    const onChangeHandler = (e) => {
+        setSearchValue(state => ({
+            ...state,
+            [e.target.name]: e.target.value,
+        }));
+
+    };
+
+    console.log(devices);
 
     return(
         <div className="bg-gray-800 p-4 mb-4 rounded-md shadow-md">
       <h2 className="text-2xl font-semibold text-white mb-4">Search Devices</h2>
       <div className="flex items-center">
+       
+    
         <input
+          name="search"
           type="text"
-        //   value={searchTerm}
-        //   onChange={(e) => setSearchTerm(e.target.value)}
+          value={searchValue.search}
+          onChange={onChangeHandler}
           placeholder="Search by brand..."
           className="flex-1 p-3 border border-gray-600 rounded-l-md focus:outline-none"
-        />
+          />
+      
         <button
         //   onClick={handleSearch}
           className="bg-blue-500 text-white p-3 rounded-r-md hover:bg-blue-600 transition duration-300 focus:outline-none"
@@ -28,7 +61,7 @@ const SearchDevice = () => {
               className="bg-white p-4 rounded-md shadow-md flex flex-col items-center"
             >
                 <img
-                // src={result.imageUrl} // Assuming there is an 'imageUrl' property in the result
+                src='https://i.ebayimg.com/images/g/zRkAAOSwVvtiUJLY/s-l1200.webp' // Assuming there is an 'imageUrl' property in the result
                 // alt={`${result.brand} ${result.deviceType}`}
                 className="w-32 h-32 object-cover mb-2 rounded-md"
               />
