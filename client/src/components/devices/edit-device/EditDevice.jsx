@@ -22,7 +22,6 @@ const validationSchema = object().shape({
 
 const EditDevice = () => {
     const { deviceId } = useParams();
-    const [device, setDevice] = useState();
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
@@ -65,7 +64,6 @@ const EditDevice = () => {
     devicesService.getOne(deviceId)
         .then((result) => {
             if (isMounted) {
-                setDevice(result);
                 setValues({
                     deviceType: result.deviceType,
                     brand: result.brand,
@@ -85,7 +83,6 @@ const EditDevice = () => {
     };
 }, [deviceId]);
 
-  console.log(device);
     return(
         <main className={styles.mainBackground}>
         <h2 className={styles.heading}>Edit Your <span className={styles.headingColored}>Offer</span>!</h2>
