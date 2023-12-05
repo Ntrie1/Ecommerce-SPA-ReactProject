@@ -51,7 +51,7 @@ const DetailsDevice = () => {
         setShowConfirmModal((prev) => !prev);
       };
 
-
+      console.log(device);
     return (
 
         <div className={styles.backgroundContainer}>
@@ -62,6 +62,9 @@ const DetailsDevice = () => {
                 </div>
              )} 
 
+       {device.length != 0  && (
+
+      
         <div className="max-w-md mx-auto mt-8 mb-20 p-4 border border-gray-300 rounded-md bg-white">
             <img
                 src={device.imageUrl}
@@ -142,7 +145,8 @@ const DetailsDevice = () => {
           </div>
         )}
         </div>
-
+            )}
+          
         </div> 
     );
 
