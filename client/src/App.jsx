@@ -31,7 +31,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/devices' element={<AllDevices />} />
         <Route path='/register' element={<Register/>} />
-        <Route path='/search' element ={<SearchDevice/>} />
+        <Route path='/devices/search' element ={<SearchDevice/>} />
 
 
       <Route element={<AuthGuard/>} >
