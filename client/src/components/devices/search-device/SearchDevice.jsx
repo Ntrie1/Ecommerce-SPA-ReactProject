@@ -2,9 +2,12 @@ import { useEffect, useState } from "react";
 import * as devicesService from '../../../services/devicesService'
 import { Link } from "react-router-dom";
 
+import styles from './SearchDevice.module.css';
+
 const SearchDevice = () => {
     const [searchValue, setSearchValue] = useState({ search: '' });
     const [devices, setDevices] = useState([]);
+    const [error, setError] = useState('');
 
 
     useEffect(() => {
@@ -12,7 +15,7 @@ const SearchDevice = () => {
             .then(res => setDevices(res.filter(device => device.brand
                 .toLowerCase()
                 .includes(searchValue.search.toLowerCase()))))
-            .catch(error => console.log(error))
+            .catch(error => setError(error.message))
 
     }, [searchValue]);
 
@@ -47,17 +50,23 @@ const SearchDevice = () => {
 
             </div>
 
+            {error && ( 
+                <div className={styles.errorContainer}>
+                    <strong>Error:</strong>
+                    <span>{error}</span>
+                </div>
+             )} 
+
             {devices.length > 0 && (
                 <div className="mt-4 flex flex-wrap gap-4">
-                    {/* <h3 className="text-xl font-semibold text-white mb-2">Search Results:</h3> */}
                     {devices.map((device) => (
                         <div
-                            key={device._id} // Use a unique identifier for each result
+                            key={device._id} 
                             className="bg-white p-4 rounded-md shadow-md flex flex-col items-center"
                         >
                             <img
-                                src={device.imageUrl} // Assuming there is an 'imageUrl' property in the result
-                                // alt={`${device.brand} ${device.deviceType}`}
+                                src={device.imageUrl} 
+                                alt={`${device.brand} ${device.deviceType}`}
                                 className="w-32 h-32 object-cover mb-2 rounded-md"
                             />
                             <h4 className="text-lg font-semibold mb-2">{device.brand}</h4>
