@@ -15,6 +15,7 @@ import EditDevice from './components/devices/edit-device/EditDevice'
 import Profile from './components/user/profile/Profile'
 import AuthGuard from './components/common/guards/AuthGuard'
 import NotFound from './components/main/notFound/NotFound'
+import SearchDevice from './components/devices/search-device/SearchDevice'
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/devices' element={<AllDevices />} />
         <Route path='/register' element={<Register/>} />
+        <Route path='/search' element ={<SearchDevice/>} />
 
 
       <Route element={<AuthGuard/>} >
