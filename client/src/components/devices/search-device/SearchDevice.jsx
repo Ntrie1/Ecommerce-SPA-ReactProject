@@ -57,8 +57,8 @@ const SearchDevice = () => {
                 </div>
              )} 
 
-            {devices.length > 0 && (
-                <div className="mt-4 flex flex-wrap gap-4">
+            {devices.length > 0 ? (
+                <div className="mt-4 flex flex-wrap gap-4 justify-center items-center">
                     {devices.map((device) => (
                         <div
                             key={device._id} 
@@ -81,6 +81,17 @@ const SearchDevice = () => {
                         </div>
                     ))}
                 </div>
+            ) :(
+ 
+                <div className="mt-4 flex justify-center items-center">
+                <div className="bg-gray-200 p-8 rounded-md shadow-md text-center">
+                    <h2 className="text-2xl font-semibold mb-4">No Devices Found</h2>
+                    <p className="text-gray-600 mb-4">Sorry, there are no devices matching your search criteria.</p>
+                </div>
+            </div>
+            
+
+
             )}
         </div>
     );

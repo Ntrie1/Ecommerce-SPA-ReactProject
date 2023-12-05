@@ -89,7 +89,7 @@ const DetailsDevice = () => {
                             <span className="font-semibold">Brand:</span> {device.brand}
                         </p>
                         <p className="text-gray-700 mb-2">
-                            <span className="font-semibold">Type:</span> {device.model}
+                            <span className="font-semibold">Model:</span> {device.model}
                         </p>
                         <p className="text-gray-700 mb-2">
                             <span className="font-semibold">Condition:</span> {device.condition}
