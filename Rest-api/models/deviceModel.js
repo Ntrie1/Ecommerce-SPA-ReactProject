@@ -45,7 +45,7 @@ const deviceSchema = new mongoose.Schema({
     },
 
     sellerNumber: {
-        type: Number
+        type: String
     }
 }, { timestamps: true });
 
