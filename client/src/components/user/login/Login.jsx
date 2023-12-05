@@ -6,7 +6,7 @@ import styles from './Login.module.css'
 import { useContext, useEffect } from "react";
 import AuthContext from "../../../context/authContext";
 
-// Define a Yup schema for validation
+
 const validationSchema = Yup.object().shape({
     email: Yup.string().email('Invalid email address').required('Email is required'),
     password: Yup.string().required('Password is required').min(5, 'Password must have at least 5 characters'),
@@ -15,14 +15,14 @@ const validationSchema = Yup.object().shape({
 const Login = () => {
     const { loginSubmitHandler, loginError, clearError } = useContext(AuthContext)
 
-    // Pass the validation schema to the useForm hook
+    
     const { values, errors, onChange, onSubmit } = useForm(
         loginSubmitHandler,
         {
             email: '',
             password: '',
         },
-        validationSchema  // Add validation schema
+        validationSchema  
     );
 
     useEffect(() => {
