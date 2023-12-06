@@ -40,8 +40,6 @@ const DetailsDevice = () => {
     }, [deviceId]);
 
 
-    console.log(isOwner);
-
     const handleDelete = () =>{
         try {
             deviceService.remove(deviceId);
@@ -55,7 +53,6 @@ const DetailsDevice = () => {
         setShowConfirmModal((prev) => !prev);
       };
 
-      console.log(device);
     return (
 
        

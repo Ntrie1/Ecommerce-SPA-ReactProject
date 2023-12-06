@@ -27,7 +27,6 @@ const SearchDevice = () => {
 
     };
 
-    console.log(devices);
 
     return (
         <div className="bg-gray-800 p-4 mb-4 rounded-md shadow-md">

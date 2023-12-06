@@ -35,7 +35,6 @@ const Profile = () => {
 
   }, [username, email])
 
-  console.log(devices);
 
 
 
