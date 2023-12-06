@@ -8,14 +8,21 @@ const SearchDevice = () => {
     const [searchValue, setSearchValue] = useState({ search: '' });
     const [devices, setDevices] = useState([]);
     const [error, setError] = useState('');
+    const [isLoading, setIsLoading] = useState(true);
 
 
     useEffect(() => {
         devicesService.getAll()
-            .then(res => setDevices(res.filter(device => device.brand
-                .toLowerCase()
-                .includes(searchValue.search.toLowerCase()))))
-            .catch(error => setError(error.message))
+            .then(res => {
+                setDevices(res.filter(device => device.brand
+                    .toLowerCase()
+                    .includes(searchValue.search.toLowerCase())))
+                setIsLoading(false);    
+            })
+            .catch(error => {
+                setError(error.message);
+                setIsLoading(false);             
+            })
 
     }, [searchValue]);
 
@@ -49,22 +56,22 @@ const SearchDevice = () => {
 
             </div>
 
-            {error && ( 
+            {error && (
                 <div className={styles.errorContainer}>
                     <strong>Error:</strong>
                     <span>{error}</span>
                 </div>
-             )} 
+            )}
 
             {devices.length > 0 ? (
                 <div className="mt-4 flex flex-wrap gap-4 justify-center items-center">
                     {devices.map((device) => (
                         <div
-                            key={device._id} 
+                            key={device._id}
                             className="bg-white p-4 rounded-md shadow-md flex flex-col items-center"
                         >
                             <img
-                                src={device.imageUrl} 
+                                src={device.imageUrl}
                                 alt={`${device.brand} ${device.deviceType}`}
                                 className="w-32 h-32 object-cover mb-2 rounded-md"
                             />
@@ -80,15 +87,15 @@ const SearchDevice = () => {
                         </div>
                     ))}
                 </div>
-            ) :(
- 
+            ) : (
+
                 <div className="mt-4 flex justify-center items-center">
-                <div className="bg-gray-200 p-8 rounded-md shadow-md text-center">
-                    <h2 className="text-2xl font-semibold mb-4">No Devices Found</h2>
-                    <p className="text-gray-600 mb-4">Sorry, there are no devices matching your search criteria.</p>
+                    <div className="bg-gray-200 p-8 rounded-md shadow-md text-center">
+                        <h2 className="text-2xl font-semibold mb-4">No Devices Found</h2>
+                        <p className="text-gray-600 mb-4">Sorry, there are no devices matching your search criteria.</p>
+                    </div>
                 </div>
-            </div>
-            
+
 
 
             )}
