@@ -9,6 +9,7 @@ import Loader from "../../common/loader/Loader";
 const AllDevices = () => {
     const [devices, setDevices] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState('');
 
     useEffect(() => {
         const abortController = new AbortController();
@@ -19,11 +20,8 @@ const AllDevices = () => {
                 setDevices(response);
                 setIsLoading(false);
             } catch (error) {
-                if (error.name === 'AbortError') {
-                    console.log('Fetch aborted:', error.message);
-                } else {
-                    console.error('Fetch error:', error);
-                }
+                setError(error.message);
+                isLoading(false);
             }
         };
     
@@ -38,6 +36,13 @@ const AllDevices = () => {
 
     return(
         <>
+        
+        {error && ( 
+                <div className={styles.errorContainer}>
+                    <strong>Error:</strong>
+                    <span>{error}</span>
+                </div>
+             )} 
             {isLoading ? (
                 <Loader />
             ) : devices.length === 0 ? (
@@ -48,6 +53,7 @@ const AllDevices = () => {
                 <div className={styles.fullViewport}>
                     <div className={styles.customContainer}>
                         <h2 className="text-2xl font-semibold mb-4">All Devices</h2>
+                      
                         <div className={styles.deviceGrid}>
                             {devices.map((device) => (
                                 <OneDevice
