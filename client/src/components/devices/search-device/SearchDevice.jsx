@@ -3,6 +3,7 @@ import * as devicesService from '../../../services/devicesService'
 import { Link } from "react-router-dom";
 
 import styles from './SearchDevice.module.css';
+import Loader from "../../common/loader/Loader";
 
 const SearchDevice = () => {
     const [searchValue, setSearchValue] = useState({ search: '' });
@@ -63,42 +64,45 @@ const SearchDevice = () => {
                 </div>
             )}
 
-            {devices.length > 0 ? (
+            
+            {isLoading ? (
+                <Loader/>
+            ) :devices.length > 0 ? (
                 <div className="mt-4 flex flex-wrap gap-4 justify-center items-center">
-                    {devices.map((device) => (
-                        <div
-                            key={device._id}
-                            className="bg-white p-4 rounded-md shadow-md flex flex-col items-center"
+                {devices.map((device) => (
+                    <div
+                        key={device._id}
+                        className="bg-white p-4 rounded-md shadow-md flex flex-col items-center"
+                    >
+                        <img
+                            src={device.imageUrl}
+                            alt={`${device.brand} ${device.deviceType}`}
+                            className="w-32 h-32 object-cover mb-2 rounded-md"
+                        />
+                        <h4 className="text-lg font-semibold mb-2">{device.brand}</h4>
+                        <p className="text-gray-600 mb-2">{device.deviceType}</p>
+                        <p className="text-gray-700 font-bold">${device.price}</p>
+                        <Link
+                            to={`/devices/${device._id}`}
+                            className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300"
                         >
-                            <img
-                                src={device.imageUrl}
-                                alt={`${device.brand} ${device.deviceType}`}
-                                className="w-32 h-32 object-cover mb-2 rounded-md"
-                            />
-                            <h4 className="text-lg font-semibold mb-2">{device.brand}</h4>
-                            <p className="text-gray-600 mb-2">{device.deviceType}</p>
-                            <p className="text-gray-700 font-bold">${device.price}</p>
-                            <Link
-                                to={`/devices/${device._id}`}
-                                className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300"
-                            >
-                                Details
-                            </Link>
-                        </div>
-                    ))}
-                </div>
-            ) : (
-
-                <div className="mt-4 flex justify-center items-center">
-                    <div className="bg-gray-200 p-8 rounded-md shadow-md text-center">
-                        <h2 className="text-2xl font-semibold mb-4">No Devices Found</h2>
-                        <p className="text-gray-600 mb-4">Sorry, there are no devices matching your search criteria.</p>
+                            Details
+                        </Link>
                     </div>
+                ))}
+            </div>
+            ) : (
+                <div className="mt-4 flex justify-center items-center">
+                <div className="bg-gray-200 p-8 rounded-md shadow-md text-center">
+                    <h2 className="text-2xl font-semibold mb-4">No Devices Found</h2>
+                    <p className="text-gray-600 mb-4">Sorry, there are no devices matching your search criteria.</p>
                 </div>
+            </div>
+            )
+            
+            }
 
-
-
-            )}
+          
         </div>
     );
 }
