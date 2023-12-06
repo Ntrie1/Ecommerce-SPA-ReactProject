@@ -72,7 +72,7 @@ const SearchDevice = () => {
                 {devices.map((device) => (
                     <div
                         key={device._id}
-                        className="bg-white p-4 rounded-md shadow-md flex flex-col items-center"
+                        className="bg-white p-4 rounded-md shadow-md flex flex-col items-center mb-8"
                     >
                         <img
                             src={device.imageUrl}
