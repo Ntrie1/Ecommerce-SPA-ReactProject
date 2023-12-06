@@ -11,6 +11,7 @@ import Loader from '../../common/loader/Loader';
 const Profile = () => {
     const [devices, setDevices] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState('');
     const { username, email } = useContext(AuthContext);
 
     useEffect(() =>{
@@ -22,8 +23,8 @@ const Profile = () => {
                 if (isMounted) setDevices(res), setIsLoading(false);
             })
             } catch (error) {
-              console.error('Error fetching devices:', error);
-              // Handle the error as needed
+              setError(error.message);
+              setIsLoading(false);
             }
           };
 
@@ -87,8 +88,7 @@ const Profile = () => {
       Create an offer
     </Link>
   </div>
-                  )
-                  }
+                  )}
                   
                     </div>
                 </div>
