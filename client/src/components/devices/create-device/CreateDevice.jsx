@@ -27,8 +27,8 @@ const CreateDevice = () => {
       const response = await devicesService.create(values);
       navigate('/profile');
     } catch (error) {
-      if (error.response && error.response.data && error.response.data.message) {
-        setError(error.response.data.message);
+      if (error.message) {
+        setError(error.message);
       } else {
         setError('An error occurred while creating the device.');
       }
