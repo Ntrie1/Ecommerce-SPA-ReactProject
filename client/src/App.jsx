@@ -4,7 +4,7 @@ import Footer from './components/common/footer/Footer'
 import HomePage from './components/main/homePage/HomePage'
 import { Route, Routes } from 'react-router-dom'
 import Login from './components/user/login/Login'
-import {AuthProvider} from './context/authContext'
+import { AuthProvider } from './context/authContext'
 
 import Register from './components/user/register/Register'
 import Logout from './components/user/logout/Logout'
@@ -16,41 +16,51 @@ import Profile from './components/user/profile/Profile'
 import AuthGuard from './components/common/guards/AuthGuard'
 import NotFound from './components/main/notFound/NotFound'
 import SearchDevice from './components/devices/search-device/SearchDevice'
+import UnauthGuard from './components/common/guards/UnauthGuard'
 
 function App() {
 
 
   return (
     <>
-    <AuthProvider>
+      <AuthProvider>
 
-      <Header />
+        <Header />
 
-      <Routes>
-        <Route path='/' element={<HomePage />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/devices' element={<AllDevices />} />
-        <Route path='/register' element={<Register/>} />
-        <Route path='/devices/search' element ={<SearchDevice/>} />
+        <Routes>
 
-
-      <Route element={<AuthGuard/>} >
-
-        <Route path='/logout' element={<Logout/>} />
-        <Route path='/profile' element={<Profile/>} />
-        <Route path='/devices/create' element={<CreateDevice/>} />
-        <Route path='/devices/:deviceId' element={<DetailsDevice/>} />
-        <Route path='devices/:deviceId/edit' element={<EditDevice/>} />
-      </Route>
+          <Route path='/' element={<HomePage />} />
+          <Route path='/devices' element={<AllDevices />} />
+          <Route path='/devices/:deviceId' element={<DetailsDevice />} />
 
 
-      <Route path="*" element={<NotFound />} />
+          <Route element={<UnauthGuard />}>
 
-      </Routes>
+            <Route path='/login' element={<Login />} />
+            <Route path='/register' element={<Register />} />
 
-      <Footer />
+          </Route>
 
-    </AuthProvider>
+
+
+          <Route element={<AuthGuard />} >
+
+            <Route path='/logout' element={<Logout />} />
+            <Route path='/profile' element={<Profile />} />
+            <Route path='/devices/create' element={<CreateDevice />} />
+            <Route path='devices/:deviceId/edit' element={<EditDevice />} />
+            <Route path='/devices/search' element={<SearchDevice />} />
+
+          </Route>
+
+
+          <Route path="*" element={<NotFound />} />
+
+        </Routes>
+
+        <Footer />
+
+      </AuthProvider>
     </>
   )
 }
