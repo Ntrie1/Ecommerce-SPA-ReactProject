@@ -85,7 +85,8 @@ Page available for all users and it contains all the created device offers.
 ![Alt text](image-6.png)
 
 ## Device Details Page 
-This page is available for all users they can see the characteristics of the device plus the seller's number. 
+* This page is available for all users they can see the characteristics of the device plus the seller's number.
+* If this page is opened by the owner of the device they will be able to see edit and delete buttons.
 ![Alt text](image-7.png)
 
 
