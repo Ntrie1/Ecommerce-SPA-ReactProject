@@ -25,7 +25,7 @@ const CreateDevice = () => {
   const onCreateDeviceSubmit = async (values) => {
     try {
       const response = await devicesService.create(values);
-      navigate('/devices');
+      navigate('/profile');
     } catch (error) {
       if (error.response && error.response.data && error.response.data.message) {
         setError(error.response.data.message);
