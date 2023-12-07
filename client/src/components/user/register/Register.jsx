@@ -14,7 +14,7 @@ const Register = () => {
   // Define the validation schema
   const registrationSchema = Yup.object().shape({
     email: Yup.string().email('Invalid email address').required('Email is required'),
-    username: Yup.string().required('Username is required').min(4, 'Name should be at least 4 characters'),
+    username: Yup.string().required('Username is required').min(5, 'Name should be at least 5 characters'),
     password: Yup.string().min(5, 'Password must be at least 5 characters').required('Password is required'),
     repeatPassword: Yup.string()
     .required('Confirm Password is required')
