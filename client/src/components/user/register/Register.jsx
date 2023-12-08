@@ -41,17 +41,7 @@ const Register = () => {
           </div>
           <div className="md:col-span-1 lg:col-span-1">
             <form onSubmit={onSubmit} className="max-w-md mx-auto">
-              {/* <div className="mb-6">
-                <input
-                  type="text"
-                  placeholder="Name"
-                  name="name"
-                  onChange={onChange}
-                  value={values.name}
-                  className={`w-full p-3 border border-solid border-gray-300 outline-none rounded-lg ${errors.name ? 'border-red-500' : ''}`}
-                />
-                {errors.name && <p className="text-red-600 text-sm mt-1">{errors.name}</p>}
-              </div> */}
+            
               <div className="mb-6">
                 <input
                   type="email"
