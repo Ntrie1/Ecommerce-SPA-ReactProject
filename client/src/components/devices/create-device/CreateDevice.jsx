@@ -19,7 +19,7 @@ sellerNumber: number().typeError('Seller Number must be a number').required('Sel
 });
 
 const CreateDevice = () => {
-  const [error, setError] = useState(null);
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const onCreateDeviceSubmit = async (values) => {
@@ -62,7 +62,7 @@ const CreateDevice = () => {
           className="max-w-md mx-auto mt-8 p-4 border border-gray-300 rounded-md bg-gray-100"
         >
 
-              {error && <p className="text-red-500 text-sm mb-4">{error}</p>}   
+              {error && <p className="text-red-600 text-sb mb-4">{error}</p>}   
           {/* Device Type */}
           <div className="mb-4">
             <label
