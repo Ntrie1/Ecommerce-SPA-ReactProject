@@ -22,7 +22,7 @@ const validationSchema = object().shape({
 
 const EditDevice = () => {
     const { deviceId } = useParams();
-    const [error, setError] = useState(null);
+    const [error, setError] = useState('');
     const navigate = useNavigate();
 
   const onEditDeviceSubmit = async (values) => {
@@ -30,8 +30,8 @@ const EditDevice = () => {
       const response = await devicesService.edit(deviceId, values)
       navigate(`/devices/${deviceId}`);
     } catch (error) {
-      if (error.response && error.response.data && error.response.data.message) {
-        setError(error.response.data.message);
+      if (error.message) {
+        setError(error.message);
       } else {
         setError('An error occurred while editing the device.');
       }
