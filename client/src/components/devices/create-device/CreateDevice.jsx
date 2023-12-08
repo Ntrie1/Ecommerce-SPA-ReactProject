@@ -15,7 +15,7 @@ const validationSchema = object().shape({
   price: number().typeError('Price must be a number').required('Price is required'),
   description: string().required('Description is required'),
   imageUrl: string().required('Please enter image url'),
-sellerNumber: number().typeError('Seller Number must be a number').required('Seller Number is required'),
+  sellerNumber: number().typeError('Seller Number must be a number').required('Seller Number is required'),
 });
 
 const CreateDevice = () => {
@@ -62,7 +62,12 @@ const CreateDevice = () => {
           className="max-w-md mx-auto mt-8 p-4 border border-gray-300 rounded-md bg-gray-100"
         >
 
-              {error && <p className="text-red-600 text-sb mb-4">{error}</p>}   
+          {error && (
+            <div className={styles.errorContainer}>
+              <strong>Error:</strong>
+              <span>{error}</span>
+            </div>
+          )}
           {/* Device Type */}
           <div className="mb-4">
             <label
@@ -77,9 +82,8 @@ const CreateDevice = () => {
               name="deviceType"
               value={values.deviceType}
               onChange={onChange}
-              className={`w-full p-3 border border-solid border-gray-300 outline-none rounded-lg ${
-                errors.deviceType ? 'border-red-500' : ''
-              }`}
+              className={`w-full p-3 border border-solid border-gray-300 outline-none rounded-lg ${errors.deviceType ? 'border-red-500' : ''
+                }`}
               placeholder="e.g., Smartphone, Laptop, Tablet"
             />
             {errors.deviceType && (
@@ -98,9 +102,8 @@ const CreateDevice = () => {
               name="brand"
               value={values.brand}
               onChange={onChange}
-              className={`w-full p-3 border border-solid border-gray-300 outline-none rounded-lg ${
-                errors.brand ? 'border-red-500' : ''
-              }`}
+              className={`w-full p-3 border border-solid border-gray-300 outline-none rounded-lg ${errors.brand ? 'border-red-500' : ''
+                }`}
               placeholder="Brand"
             />
             {errors.brand && (
@@ -119,9 +122,8 @@ const CreateDevice = () => {
               name="model"
               value={values.model}
               onChange={onChange}
-              className={`w-full p-3 border border-solid border-gray-300 outline-none rounded-lg ${
-                errors.model ? 'border-red-500' : ''
-              }`}
+              className={`w-full p-3 border border-solid border-gray-300 outline-none rounded-lg ${errors.model ? 'border-red-500' : ''
+                }`}
               placeholder="Model"
             />
             {errors.model && (
@@ -143,9 +145,8 @@ const CreateDevice = () => {
               name="condition"
               value={values.condition}
               onChange={onChange}
-              className={`w-full p-3 border border-solid border-gray-300 outline-none rounded-lg ${
-                errors.condition ? 'border-red-500' : ''
-              }`}
+              className={`w-full p-3 border border-solid border-gray-300 outline-none rounded-lg ${errors.condition ? 'border-red-500' : ''
+                }`}
               placeholder="Condition"
             />
             {errors.condition && (
@@ -167,9 +168,8 @@ const CreateDevice = () => {
               name="storageCapacity"
               value={values.storageCapacity}
               onChange={onChange}
-              className={`w-full p-3 border border-solid border-gray-300 outline-none rounded-lg ${
-                errors.storageCapacity ? 'border-red-500' : ''
-              }`}
+              className={`w-full p-3 border border-solid border-gray-300 outline-none rounded-lg ${errors.storageCapacity ? 'border-red-500' : ''
+                }`}
               placeholder="Storage Capacity"
             />
             {errors.storageCapacity && (
@@ -188,9 +188,8 @@ const CreateDevice = () => {
               name="color"
               value={values.color}
               onChange={onChange}
-              className={`w-full p-3 border border-solid border-gray-300 outline-none rounded-lg ${
-                errors.color ? 'border-red-500' : ''
-              }`}
+              className={`w-full p-3 border border-solid border-gray-300 outline-none rounded-lg ${errors.color ? 'border-red-500' : ''
+                }`}
               placeholder="Device color"
             />
             {errors.color && (
@@ -209,9 +208,8 @@ const CreateDevice = () => {
               name="price"
               value={values.price}
               onChange={onChange}
-              className={`w-full p-3 border border-solid border-gray-300 outline-none rounded-lg ${
-                errors.price ? 'border-red-500' : ''
-              }`}
+              className={`w-full p-3 border border-solid border-gray-300 outline-none rounded-lg ${errors.price ? 'border-red-500' : ''
+                }`}
               placeholder="Device price"
             />
             {errors.price && (
@@ -232,9 +230,8 @@ const CreateDevice = () => {
               name="description"
               value={values.description}
               onChange={onChange}
-              className={`w-full p-3 border border-solid border-gray-300 outline-none rounded-lg resize-none ${
-                errors.description ? 'border-red-500' : ''
-              }`}
+              className={`w-full p-3 border border-solid border-gray-300 outline-none rounded-lg resize-none ${errors.description ? 'border-red-500' : ''
+                }`}
               placeholder="Device description"
             />
             {errors.description && (
@@ -256,9 +253,8 @@ const CreateDevice = () => {
               name="imageUrl"
               value={values.imageUrl}
               onChange={onChange}
-              className={`w-full p-3 border border-solid border-gray-300 outline-none rounded-lg ${
-                errors.imageUrl ? 'border-red-500' : ''
-              }`}
+              className={`w-full p-3 border border-solid border-gray-300 outline-none rounded-lg ${errors.imageUrl ? 'border-red-500' : ''
+                }`}
               placeholder="Image URL"
             />
             {errors.imageUrl && (
@@ -280,9 +276,8 @@ const CreateDevice = () => {
               name="sellerNumber"
               value={values.sellerNumber}
               onChange={onChange}
-              className={`w-full p-3 border border-solid border-gray-300 outline-none rounded-lg ${
-                errors.sellerNumber ? 'border-red-500' : ''
-              }`}
+              className={`w-full p-3 border border-solid border-gray-300 outline-none rounded-lg ${errors.sellerNumber ? 'border-red-500' : ''
+                }`}
               placeholder="Seller Number"
               inputMode="numeric"
             />
