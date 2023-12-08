@@ -1,4 +1,3 @@
-// Register.js
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
 import styles from './Register.module.css';
@@ -11,7 +10,6 @@ const Register = () => {
 
   
 
-  // Define the validation schema
   const registrationSchema = Yup.object().shape({
     email: Yup.string().email('Invalid email address').required('Email is required'),
     username: Yup.string().required('Username is required').min(5, 'Name should be at least 5 characters'),
