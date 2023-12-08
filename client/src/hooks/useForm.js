@@ -29,7 +29,6 @@ export default function useForm(submitHandler, initialValues, validationSchema) 
     const onSubmit = (e) => {
         e.preventDefault();
 
-        // console.log(values);
         validationSchema
             .validate(values, { abortEarly: false })
             .then(() => {
