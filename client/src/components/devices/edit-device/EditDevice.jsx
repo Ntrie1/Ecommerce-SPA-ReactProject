@@ -16,7 +16,7 @@ const validationSchema = object().shape({
     color: string().required('Color is required').max(15, 'The word is too long!'),
     price: number().typeError('Price must be a number').required('Price is required'),
     description: string().required('Description is required'),
-    imageUrl: string().required('Please enter website'),
+    imageUrl: string().required('Please enter image url'),
   sellerNumber: number().typeError('Seller Number must be a number').required('Seller Number is required'),
   });
 
